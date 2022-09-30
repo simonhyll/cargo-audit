@@ -1,0 +1,8 @@
+[package]
+edition = "2021"
+name = "sample"
+version = "0.1.0"
+
+[dependencies]
+# A crate that I know (currently) will create a warning
+ansi_term = "=0.12.1"
