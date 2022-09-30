@@ -10,5 +10,7 @@ jobs:
       pull-requests: write
 
     steps:
+      - uses: actions/checkout@v2
+      
       - name: Run cargo audit fix
         uses: simonhyll/cargo-audit@v0.1.2
