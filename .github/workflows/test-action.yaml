@@ -14,4 +14,4 @@ jobs:
         with:
           toolchain: stable
       - name: Run cargo audit fix
-        uses: simonhyll/cargo-audit@v0.1.1
+        uses: docker://ghcr.io/simonhyll/cargo-audit
