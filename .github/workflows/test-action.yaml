@@ -1,0 +1,12 @@
+name: Test action
+on:
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run cargo audit fix
+        id: hello
+        uses: simonhyll/cargo-audit@v0.1.0
