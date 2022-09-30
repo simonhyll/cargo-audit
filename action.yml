@@ -1,0 +1,5 @@
+name: "Cargo Audit"
+description: "Runs cargo audit fix"
+runs:
+  using: "docker"
+  image: "Dockerfile"
