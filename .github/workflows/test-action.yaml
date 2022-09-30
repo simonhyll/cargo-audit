@@ -10,4 +10,4 @@ jobs:
       - uses: actions-rs/cargo@v1
       - name: Run cargo audit fix
         id: hello
-        uses: simonhyll/cargo-audit@v0.1.0
+        uses: simonhyll/cargo-audit@v0.1.1
