@@ -32,3 +32,39 @@ docker build -t cargo-audit:latest .
 # Run it in your crate
 docker run --rm -v $(pwd):/app cargo-audit
 ```
+
+## In a workflow
+
+This is the most useful usecase. Just add it to a workflow and bam, your project gets audited and a pull request is created to push the fixes if any were made.
+
+```yaml
+name: Audit project
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Run cargo audit fix
+        uses: simonhyll/cargo-audit@v0.1.1
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: bot/cargo-audit
+          title: "[Bot] Audit fixes"
+          commit-message: Cargo audit fixes
+          body: >
+            Updates to Cargo.toml and/or Cargo.lock with security fixes.
+          labels: automated pr
+```
