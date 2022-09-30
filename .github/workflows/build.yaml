@@ -2,7 +2,7 @@ name: Build and deploy
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '0 0 * * 1'
+    - cron:  '0 0 * * *'
   push:
     tags:
       - "v**"

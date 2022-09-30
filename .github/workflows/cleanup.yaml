@@ -1,0 +1,26 @@
+name: Delete old container images
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows:
+      - Build and deploy
+    types:
+      - completed
+
+jobs:
+  clean-ghcr:
+    name: Delete old unused container images
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    steps:
+      - name: Delete old images
+        uses: snok/container-retention-policy@v1
+        with:
+          image-names: cargo-audit
+          cut-off: 1 week ago UTC
+          keep-at-least: 2
+          skip-tags: latest, v*
+          account-type: personal
+          token: ${{ secrets.IMAGE_RETENTION_PAT }}

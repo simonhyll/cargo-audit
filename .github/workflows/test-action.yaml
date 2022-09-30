@@ -7,7 +7,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions-rs/cargo@v1
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
       - name: Run cargo audit fix
         id: hello
         uses: simonhyll/cargo-audit@v0.1.1
