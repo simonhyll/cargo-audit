@@ -11,4 +11,4 @@ jobs:
 
     steps:
       - name: Run cargo audit fix
-        uses: docker://ghcr.io/simonhyll/cargo-audit
+        uses: simonhyll/cargo-audit@v0.1.2

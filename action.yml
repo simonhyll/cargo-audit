@@ -1,5 +1,13 @@
 name: "Cargo Audit"
 description: "Runs cargo audit fix"
+inputs:
+  path:
+    description: "Path to Cargo.toml"
+    required: false
+    default: "."
 runs:
   using: "docker"
-  image: "Dockerfile"
+  image: "docker://ghcr.io/simonhyll/cargo-audit:latest"
+branding:
+  color: blue
+  icon: aperture
