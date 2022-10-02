@@ -5,4 +5,4 @@ FROM gcr.io/distroless/cc:nonroot
 WORKDIR /app
 COPY --from=builder --chown=nonroot:nonroot /usr/local/cargo/bin/cargo-audit /usr/local/bin/cargo-audit
 USER 65532
-ENTRYPOINT  ["/usr/local/bin/cargo-audit", "audit", "fix"]
+ENTRYPOINT  ["/usr/local/bin/cargo-audit", "audit", "fix", "--db", ".git/audit"]
