@@ -20,6 +20,6 @@ jobs:
       - run: cd sample
       
       - name: Run cargo audit fix
-        uses: simonhyll/cargo-audit@v0.1.2
+        uses: simonhyll/cargo-audit@main
         with:
           file: sample/Cargo.lock
