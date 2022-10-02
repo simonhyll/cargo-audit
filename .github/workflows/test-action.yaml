@@ -21,3 +21,5 @@ jobs:
       
       - name: Run cargo audit fix
         uses: simonhyll/cargo-audit@v0.1.2
+        with:
+          file: sample/Cargo.lock
