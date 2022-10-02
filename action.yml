@@ -8,14 +8,22 @@ inputs:
   path:
     description: "Path to Cargo.lock"
     required: false
-    default: "./"
+    default: "./" # E.g. "sample", "sub/directory/crate"
+  fix:
+    description: "Whether or not to run with fix"
+    required: false
+    default: "true" # true or false
+  deny:
+    description: "Exit with error on: warnings, unmaintaned, unsound, yanked"
+    required: false
+    default: "false" # warnings, unmaintained, unsound, yanked
 outputs:
   warnings:
-    description: 'false'
-  critical:
-    description: 'false'
+    description: "false" # Whether or not there were warnings
 runs:
   using: "docker"
   image: "docker://ghcr.io/simonhyll/cargo-audit:latest"
   args:
     - ${{ inputs.path }}
+    - ${{ inputs.fix }}
+    - ${{ inputs.deny }}
