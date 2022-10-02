@@ -5,10 +5,10 @@ branding:
   color: blue
   icon: aperture
 inputs:
-  file:
+  path:
     description: "Path to Cargo.lock"
     required: false
-    default: "./Cargo.lock"
+    default: "./"
 outputs:
   warnings:
     description: 'false'
@@ -18,4 +18,4 @@ runs:
   using: "docker"
   image: "docker://ghcr.io/simonhyll/cargo-audit:latest"
   args:
-    - ${{ inputs.file }}
+    - ${{ inputs.path }}

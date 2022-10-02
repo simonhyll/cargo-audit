@@ -17,9 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - run: cd sample
-      
       - name: Run cargo audit fix
         uses: simonhyll/cargo-audit@main
         with:
-          file: sample/Cargo.lock
+          path: sample
