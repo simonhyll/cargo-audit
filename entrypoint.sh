@@ -7,20 +7,20 @@
 # Enter correct directory
 cd "$1"
 
-if [ "$3" == "false" ]; then
-  # Should not deny
-  DENY=""
-else
-  # Should deny
-  DENY="-D $3"
-fi
-
 if [ "$2" == "false" ]; then
   # Should not fix
   FIX=""
 else
   # Should fix
   FIX="fix"
+fi
+
+if [ "$3" == "false" ]; then
+  # Should not deny
+  DENY=""
+else
+  # Should deny
+  DENY="-D $3"
 fi
 
 echo "Running /usr/local/bin/cargo-audit audit $DENY $FIX"

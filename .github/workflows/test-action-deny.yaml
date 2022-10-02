@@ -1,0 +1,24 @@
+name: Test action deny
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows:
+      - Build and deploy
+    types:
+      - completed
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run cargo audit fix
+        uses: simonhyll/cargo-audit@v1
+        with:
+          path: sample
+          deny: warnings
