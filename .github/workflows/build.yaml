@@ -4,10 +4,8 @@ on:
   schedule:
     - cron: "0 0 * * *"
   push:
-    branches:
-      - main
-#    tags:
-#      - "v**"
+    tags:
+      - "v1**"
 
 env:
   REGISTRY: ghcr.io

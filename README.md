@@ -38,6 +38,16 @@ docker run --rm -v $(pwd):/app cargo-audit
 This is the most useful usecase. Just add it to a workflow and bam, your project gets audited and a pull request is created to push the fixes if any were made.
 
 ```yaml
+    steps:
+      - name: Run cargo audit fix
+        uses: simonhyll/cargo-audit@v1
+        with:
+          path: "./" # (optional) Path to the folder that contains your Cargo.lock file
+```
+
+Here's an example full workflow.
+
+```yaml
 name: Audit project
 on:
   workflow_dispatch:
@@ -55,7 +65,7 @@ jobs:
 
     steps:
       - name: Run cargo audit fix
-        uses: simonhyll/cargo-audit@v0.1.1
+        uses: simonhyll/cargo-audit@v1
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
