@@ -21,5 +21,6 @@ jobs:
           image-names: cargo-audit
           cut-off: 1 week ago UTC
           keep-at-least: 2
+          skip-tags: latest, v*
           account-type: personal
           token: ${{ secrets.IMAGE_RETENTION_PAT }}
