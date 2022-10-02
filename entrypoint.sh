@@ -23,13 +23,16 @@ else
   FIX="fix"
 fi
 
+echo "Running /usr/local/cargo/bin/cargo-audit audit $DENY $FIX"
 set +e
-OUTPUT=$(cargo-audit audit $DENY $FIX)
+OUTPUT=$(/usr/local/cargo/bin/cargo-audit audit $DENY $FIX)
 RESULT=$?
-set -e
 WARNINGS=$(echo $OUTPUT | grep -c ID)
+set -e
 
-if [ $RESULT == 1 ] || [ $WARNINGS ]; then
+if [ $RESULT == 1 ] || [ $WARNINGS != 0 ]; then
+  
+  /usr/local/cargo/bin/cargo-audit audit
   echo "::set-output name=warnings::true"
   if [ "$3" != "false" ]; then
     exit 1
